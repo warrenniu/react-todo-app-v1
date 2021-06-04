@@ -4,6 +4,35 @@ import Todo from './Todo'
 
 function TodoList() {
     const [todos, setTodos] = useState([]);
+    const months = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+
+    let showDate = new Date();
+
+    function displayMonth(key) {
+        for (key in months) {
+            if (parseInt(key) === (showDate.getMonth() + 1)) {
+            return months[key]
+            }
+        }
+    }
+
+    console.log(months[1])
+    console.log(displayMonth(6))
+
+    let displayTodaysDate = showDate.getDate() + " " + showDate.getFullYear();
 
     const addTodo = todo => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -44,7 +73,7 @@ function TodoList() {
     return (
         
         <div>
-            <h1>What're you doing Today?</h1>
+            <h1>Today's Date: {displayMonth(showDate.getMonth() + 1)} {displayTodaysDate}</h1>
             <TodoForm onSubmit={addTodo} />
             <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
         </div>
