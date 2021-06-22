@@ -29,9 +29,6 @@ function TodoList() {
         }
     }
 
-    console.log(months[1])
-    console.log(displayMonth(6))
-
     let displayTodaysDate = showDate.getDate() + " " + showDate.getFullYear();
 
     const addTodo = todo => {
